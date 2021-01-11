@@ -1,0 +1,44 @@
+diff --git a/Makefile b/Makefile
+index 8d93796..bf63997 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,7 @@
+-FW_USB_DIR := /lib/firmware
+-FW_UART_DIR := /lib/firmware/rtlbt
++FW_USB_DIR := $(PREFIX)/lib/firmware
++FW_UART_DIR := $(PREFIX)/lib/firmware/rtlbt
+ RTKBT_FIRMWARE_DIR := rtkbt-firmware/lib/firmware
+-MDL_DIR	:= /lib/modules/$(shell uname -r)
++MDL_DIR	:= $(PREFIX)/lib/modules/$(shell uname -r)
+ DRV_DIR	:= $(MDL_DIR)/kernel/drivers/bluetooth
+ 
+
+diff --git a/uart/Makefile b/uart/Makefile
+index f05de1b..da5577e 100644
+--- a/uart/Makefile
++++ b/uart/Makefile
+@@ -1,9 +1,9 @@
+ DRV_SRC_DIR	:= bluetooth_uart_driver
+-MDL_DIR	:= /lib/modules/$(shell uname -r)
++MDL_DIR	:= $(PREFIX)/lib/modules/$(shell uname -r)
+ DRV_DIR	:= $(MDL_DIR)/kernel/drivers/bluetooth
+ 
+ TOOL_SRC_DIR := rtk_hciattach
+-TOOL_DIR := /usr/sbin
++TOOL_DIR := $(PREFIX)/bin
+ 
+ install:
+ 	mkdir -p $(DRV_DIR)
+
+
+diff --git a/usb/Makefile b/usb/Makefile
+index c1ac87f..bdecda5 100644
+--- a/usb/Makefile
++++ b/usb/Makefile
+@@ -1,5 +1,5 @@
+ SRC_DIR	:= ./bluetooth_usb_driver
+-MDL_DIR	:= /lib/modules/$(shell uname -r)
++MDL_DIR	:= $(PREFIX)/lib/modules/$(shell uname -r)
+ DRV_DIR	:= $(MDL_DIR)/kernel/drivers/bluetooth
+ 
+ ##########################################
